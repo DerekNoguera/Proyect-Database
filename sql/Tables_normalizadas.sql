@@ -45,16 +45,6 @@ create Table Hoteles(
 );
 
 
-
-
-# Crea estados de ocupado, disponible o reservado donde, 1 - Disponible, 2 - Reserved y 
-# 3 - Ocupado
-Create Table Estado(
-    EstadoID int PRIMARY KEY AUTO_INCREMENT,
-    Descripcion Varchar(100)
-);
-
-
 #crea tipos de habitaciones Suit, Individual, doble y familiar
 Create Table Tipo_Habitacion(
     TipoID int PRIMARY KEY AUTO_INCREMENT,
@@ -73,8 +63,7 @@ create Table Habitaciones(
     Precio_Noche Decimal(10,2),
     Descripcion TEXT,
     Capacidad INT,
-    EstadoID INT,
-    Foreign Key (EstadoID) REFERENCES Estado(EstadoID),
+    Estado Varchar(50) DEFAULT "Disponible",
     Foreign Key (HotelID) REFERENCES Hoteles(HotelID),
     Foreign Key (Tipo_habitacion) REFERENCES Tipo_Habitacion(TipoID)
 );
@@ -97,3 +86,12 @@ create Table Reservas(
 );
 
 
+
+
+
+# Crea estados de ocupado, disponible o reservado donde, 1 - Disponible, 2 - Reserved y 
+# 3 - Ocupado
+-- Create Table Estado(
+--     EstadoID int PRIMARY KEY AUTO_INCREMENT,
+--     Descripcion Varchar(100)
+-- )
