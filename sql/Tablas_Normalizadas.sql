@@ -62,10 +62,6 @@ create Table Reservas(
     Foreign Key (HabitacionID) REFERENCES Habitaciones(HabitacionID)
 );
 
-
-SELECT * FROM reservas
-
-
 -- Consultas SQL (Queries):
 -- ○ Consulta para obtener los hoteles con mayor número de reservas.
 -- ○ Consulta para contar cuántas habitaciones disponibles hay en un hotel específico en una

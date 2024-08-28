@@ -69,9 +69,6 @@ create Table Habitaciones(
 );
 
 
-
-
-
 #Crea una tabla para las reservas pero la insercion de datos de esta tabla se hacen con los Store Procedure de el archivo 
 #Store_procedure que inserta datos y tambien puede eliminarlos por ID
 create Table Reservas(

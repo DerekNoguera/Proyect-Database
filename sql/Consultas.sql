@@ -18,5 +18,3 @@ JOIN Usuarios u ON r.UsuarioID = u.UsuarioID
 WHERE YEAR(r.Fecha_entrada) = YEAR(CURDATE())
 AND MONTH(r.Fecha_entrada) = MONTH(DATE_ADD(CURDATE(), INTERVAL -1 MONTH));
 
-
-

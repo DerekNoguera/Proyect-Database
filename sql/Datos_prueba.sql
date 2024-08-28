@@ -42,8 +42,11 @@ VALUES
     (1, 1, '2024-09-26', '2024-08-27', 750.00), -- Lo reservo Juan para la habitación 101 (HabitacionID = 1)
     (2, 3, '2024-09-20', '2024-09-18', 200.00), -- Lo reservo Ana para la habitación 103 (HabitacionID = 3)
     (1, 2, '2024-09-25', '2024-09-22', 240.00),
-    (1, 4, '2024-09-29', '2024-07-26', 240.00);  -- Lo reservo Juan para la habitación 102 (HabitacionID = 2)
+    (1, 3, '2024-09-29', '2024-07-26', 240.00);  -- Lo reservo Juan para la habitación 102 (HabitacionID = 2)
     
     
 INSERT INTO reservas (UsuarioID, HabitacionID, Fecha_salida, Fecha_entrada, Total_precio)
-VALUES (1, 4, '2024-09-29', '2024-08-27', 280.00);
+VALUES (1, 3, '2024-09-29', '2024-08-27', 280.00);
+
+INSERT INTO reservas (UsuarioID, HabitacionID, Fecha_salida, Fecha_entrada, Total_precio)
+VALUES (1, 3, '2024-09-29', '2024-08-28', 280.00);
