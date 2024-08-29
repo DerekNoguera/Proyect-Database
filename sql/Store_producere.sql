@@ -3,8 +3,6 @@ drop Procedure `Crear_reserva`;
 drop PROCEDURE `Eliminar_reserva`;
 
 
-
-
 #Hace un store producere de Crear_reserva para crear una nueva recerva y agregarla a la tabla reservas 
 #donde envia el ID de el usuarios, ID de habitacion para saber si es la habitacion 101,102,103, fecha de salida
 # fecha de entrada y precio.
@@ -32,7 +30,6 @@ begin
     DELETE FROM Reservas WHERE ReservaID = p_ReservaID;
 END;
 DELIMITER;
-
 
 
 
