@@ -61,7 +61,7 @@ VALUES (2, 3, '2024-09-29', '2024-07-27', 280.00);
 #consulta de mes anterior
 
 ---------------------------------------------------
-INSERT INTO reservas (UsuarioID, HabitacionID, Fecha_salida, Fecha_entrada, Total_precio)
-VALUES (5, 3, '2024-09-29', '2024-08-30', 280.00),
-VALUES (5, 3, '2024-09-28', '2024-08-30', 260.00);
+INSERT INTO reservas (UsuarioID, HabitacionID, Fecha_salida, Fecha_entrada, Total_precio)VALUES 
+(1, 1, '2024-09-29', '2024-08-30', 280.00),
+(2, 4, '2024-09-28', '2024-08-30', 260.00);
 #Las view

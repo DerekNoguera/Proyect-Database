@@ -45,7 +45,7 @@ WHERE `Codigo_Postal`  LIKE "992%";
 
 ----------------------------------------------------------------
 -- Consulta para buscar hoteles cuya ubicación termina con un texto específico.
-SELECT * FROM hoteles, hotel_direccion WHERE `Estado` LIKE "%gia";
+SELECT * FROM hoteles, hotel_direccion WHERE `Codigo_Postal` LIKE "%2";
 
 ----------------------------------------------------------------
 SELECT * FROM hoteles, hotel_direccion WHERE `Ciudad` LIKE "%anta";
@@ -65,7 +65,7 @@ SELECT AVG(num_reservas) AS Promedio_Reservas
 FROM (
         SELECT COUNT(*) AS num_reservas
         FROM reservas
-        where `Fecha_entrada` = "2024-08-27"
+        where `Fecha_entrada` = "2024-07-15"
         GROUP BY Fecha_entrada
 ) AS conteos_por_fecha;
 
