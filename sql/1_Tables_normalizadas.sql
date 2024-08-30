@@ -2,7 +2,7 @@ create database BaseDatos;
 drop Database BaseDatos;
 use BaseDatos;
 
-
+----------------------------------------------------------------
 # Una tabla con la direccion de usuarios para enviarsela a Usuarios es necesaria si quieres 
 # Hacerla 3FN
 Create Table Direccion_Usuarios(
@@ -12,6 +12,13 @@ Create Table Direccion_Usuarios(
     Estado Varchar(50)
 );
 
+----------------------------------------------------------------
+CREATE TABLE Tipo_Usuarios(
+    TipoUsuarioID INT PRIMARY KEY AUTO_INCREMENT,
+    Rol VARCHAR(50)
+);
+
+----------------------------------------------------------------
 #Recibe una llave foranea de la tabla Direccion_Usuarios y se crea la tabla usuarios
 create table Usuarios(
     UsuarioID int primary key AUTO_INCREMENT,
@@ -19,12 +26,12 @@ create table Usuarios(
     Email Varchar(100) UNIQUE,
     Telefono Varchar(15),
     Direccion INT,
+    Rol INT,
+    FOREIGN Key (Rol) REFERENCES Tipo_Usuarios(TipoUsuarioID),
     Foreign Key (Direccion) REFERENCES Direccion_Usuarios(DireccionID)
 );
 
-
-
-
+----------------------------------------------------------------
 #Crea la tabla Hotel_Direccion para  que son las direcciones de los hoteles y se le dan
 # como llaves foraneas a Hoteles
 Create table Hotel_Direccion(
@@ -34,6 +41,7 @@ Create table Hotel_Direccion(
     Codigo_Postal varchar(10)
 );
 
+----------------------------------------------------------------
 #Crea Hoteles y recibe datos como llave foranea de Hotel_direccion y es una nueva tabla que almacena datos de los hoteles
 create Table Hoteles(
     HotelID int primary key AUTO_INCREMENT,
@@ -44,14 +52,14 @@ create Table Hoteles(
     Foreign Key (DireccionID) REFERENCES Hotel_Direccion(direccion_id)
 );
 
-
+----------------------------------------------------------------
 #crea tipos de habitaciones Suit, Individual, doble y familiar
 Create Table Tipo_Habitacion(
     TipoID int PRIMARY KEY AUTO_INCREMENT,
     NombreTipo VARCHAR(50) NOT NULL
 );
 
-
+----------------------------------------------------------------
 #Habitaciones es una tabla que tiene los datos de la habitacion y recibe como llave foranea el esto de si es Disponible,
 #Ocupado o reservado, tambien recibe el ID de el hotel de la tabla Hoteles para saber que hotel es, y recibe Tipo de habitaciones
 #Coomo llave foranea de la tabla tipo de habitacions para saber si es SUit, Matrimonial ETC, y tambien se crean otros datos
@@ -68,7 +76,7 @@ create Table Habitaciones(
     Foreign Key (Tipo_habitacion) REFERENCES Tipo_Habitacion(TipoID)
 );
 
-
+----------------------------------------------------------------
 #Crea una tabla para las reservas pero la insercion de datos de esta tabla se hacen con los Store Procedure de el archivo 
 #Store_procedure que inserta datos y tambien puede eliminarlos por ID
 create Table Reservas(
@@ -81,14 +89,3 @@ create Table Reservas(
     Foreign Key (UsuarioID) REFERENCES Usuarios(UsuarioID),
     Foreign Key (HabitacionID) REFERENCES Habitaciones(HabitacionID)
 );
-
-
-
-
-
-# Crea estados de ocupado, disponible o reservado donde, 1 - Disponible, 2 - Reserved y 
-# 3 - Ocupado
--- Create Table Estado(
---     EstadoID int PRIMARY KEY AUTO_INCREMENT,
---     Descripcion Varchar(100)
--- )

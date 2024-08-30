@@ -1,10 +1,12 @@
-
-SELECT h.Nombre AS HotelNombre, COUNT(r.ReservaID) AS NumeroDeReservas -- Consulta que mustra el hotel con más reservas 
+-- Consulta que mustra el hotel con más reservas 
+SELECT h.Nombre AS HotelNombre, COUNT(r.ReservaID) AS NumeroDeReservas 
 FROM Hoteles h
-JOIN Habitaciones ha ON h.HotelID = ha.HotelID  --h alias de HOTELES, ha alias de HABITACIONES, r Aalias de RESERVAS
+JOIN Habitaciones ha ON h.HotelID = ha.HotelID  
 JOIN Reservas r ON ha.HabitacionID = r.HabitacionID
 GROUP BY h.HotelID, h.Nombre
 ORDER BY NumeroDeReservas DESC; 
+
+
 ----------------------------------------------------------------
 --Consulta para obtener los hoteles con mayor número de reservas.
 SELECT h.Nombre AS HotelNombre, COUNT(r.ReservaID) AS NumeroDeReservas
@@ -15,6 +17,8 @@ GROUP BY h.HotelID, h.Nombre
 ORDER BY NumeroDeReservas DESC;
 --Consulta que mustra el hotel con más reservas
 --h alias de HOTELES, ha alias de HABITACIONES, r Aalias de RESERVAS
+
+
 ----------------------------------------------------------------
 --Consulta para contar cuántas habitaciones disponibles hay en un hotel específico en una
 --fecha dada.
@@ -26,17 +30,27 @@ AND r.`Fecha_entrada` = '2024-01-28' WHERE h.HotelID = 1 AND hb.Estado = 'Dispon
 # Hace un left join para pasar datos de una tabla a la otra y compararlos, busca eñ en reservas el ID HOTEL
 # sea el mismo que el ID de el HOTEL de la tabla hotel, busca la fecha que quiero buscar y pregunto si esta disponible
 # Tambien le pregunto al hotel al que quiero consultarlo
+
+
 ----------------------------------------------------------------
 --Consulta para buscar hoteles por nombre.
-SELECT * FROM hoteles WHERE nombre LIKE "%Scam%";
+SELECT * FROM hoteles WHERE nombre LIKE "%Riu%";
+
+
 ----------------------------------------------------------------
 -- Consulta para buscar hoteles cuya ubicación comienza con un texto específico.
 SELECT * FROM hoteles, hotel_direccion
 WHERE `Codigo_Postal`  LIKE "992%";
+
+
 ----------------------------------------------------------------
 -- Consulta para buscar hoteles cuya ubicación termina con un texto específico.
-SELECT * FROM hoteles, hotel_direccion WHERE `Ciudad` LIKE "%gia";
+SELECT * FROM hoteles, hotel_direccion WHERE `Estado` LIKE "%gia";
+
+----------------------------------------------------------------
 SELECT * FROM hoteles, hotel_direccion WHERE `Ciudad` LIKE "%anta";
+
+
 ----------------------------------------------------------------
 -- Consulta para obtener las reservas de un cliente (por email) realizadas en el mes anterior.
 SELECT r.ReservaID, u.Email AS ReservasMesAnterior
@@ -44,14 +58,18 @@ FROM Reservas r
 JOIN Usuarios u ON r.UsuarioID = u.UsuarioID
 WHERE YEAR(r.Fecha_entrada) = YEAR(CURDATE())
 AND MONTH(r.Fecha_entrada) = MONTH(DATE_ADD(CURDATE(), INTERVAL -1 MONTH));
+
+
 -- Consulta para calcular el promedio de reservas diarias en un hotel.
 SELECT AVG(num_reservas) AS Promedio_Reservas
 FROM (
         SELECT COUNT(*) AS num_reservas
         FROM reservas
-        where `Fecha_entrada` = "2024-07-10"
+        where `Fecha_entrada` = "2024-08-27"
         GROUP BY Fecha_entrada
 ) AS conteos_por_fecha;
+
+
 ----------------------------------------------------------------
 -- -- Consulta para identificar el hotel con la mayor ocupación en el mes anterior.
 -- Consulta para identificar el hotel con la mayor ocupación en el mes anterior
@@ -74,6 +92,8 @@ GROUP BY
 ORDER BY  -- las ordena
     TotalReservas DESC
 LIMIT 1; -- lo limina a 1
+
+
 ----------------------------------------------------------------
 -- Consulta para listar los hoteles que tienen habitaciones disponiblesp pero no han sido
 -- reservadas en el último mes.
@@ -84,6 +104,8 @@ LEFT JOIN Reservas r ON hb.HabitacionID = r.HabitacionID
   AND r.Fecha_salida >= CURDATE() - INTERVAL 1 MONTH
 WHERE hb.Estado = 'Disponible'
   AND r.ReservaID IS NULL;
+
+  
 -- ¡Claro! Imagina que quieres saber qué hoteles tienen habitaciones libres para que puedas quedarte allí. Pero no solo eso, también quieres asegurarte de que esas habitaciones no hayan sido ocupadas en el último mes.
 -- Aquí está lo que hace cada parte del código:
 -- Busca todos los hoteles y sus habitaciones:

@@ -1,4 +1,6 @@
 ---------------------------------------------------  DELIMITER //
+DELIMITER//
+
 CREATE TRIGGER actualizar_disponibilidad_habitaciones
 AFTER INSERT ON Reservas
 FOR EACH ROW
@@ -6,10 +8,12 @@ BEGIN
     UPDATE Habitaciones
     SET Estado = "Ocupado"
     WHERE HabitacionID = NEW.HabitacionID;
-END//
+END;
 DELIMITER;
+
 ---------------------------------------------------
 DELIMITER//
+
 CREATE TRIGGER Actualizar_Ocupacion_habitaciones
 AFTER DELETE ON Reservas
 FOR EACH ROW
