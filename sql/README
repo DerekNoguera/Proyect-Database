@@ -1,0 +1,3 @@
+Se crean las tablas en las cuales se van a guardar datos de usuarios, hoteles y de resevas, luego se crean 
+los stored procedure agregar resevas y eliminarlas, tambien crea triggers para actualizar los estados de las
+habitaciones, indices para facilitar el acceso de datos, se crean vistas, datos de prueba y todas las consultas.
